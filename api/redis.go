@@ -21,6 +21,7 @@ var client = redis.NewClient(&redis.Options{
 
 func Redis(w http.ResponseWriter, r *http.Request) {
 	w.WriteHeader(http.StatusCreated)
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 
 	// set a foo key on upstash with this value
 	client.Set(r.Context(), "foo", "value-from-upstash-redis", 0)
